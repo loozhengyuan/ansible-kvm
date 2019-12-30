@@ -1,0 +1,15 @@
+#!/bin/bash
+# Runs linter before committing changes
+
+# Ensures that script exits if error is detected
+set -e
+
+# Use virtual environment
+source venv/bin/activate
+
+# Runs linter
+make lint
+
+# Tests for ansible take a long time to complete,
+# hence it is omitted for pre-commit hooks
+# make test

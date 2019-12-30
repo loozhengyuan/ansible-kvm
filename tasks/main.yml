@@ -1,2 +1,34 @@
 ---
-# tasks file for kvm
+# - name: Check required cpu extensions (svm|vmx)
+#   shell: "egrep -c '(vmx|svm)' /proc/cpuinfo"
+#   register: has_virt_cpu_extensions
+#   changed_when: "'1' not in has_virt_cpu_extensions.stdout"
+
+# - name: Check if processor is 64-bit
+#   shell: egrep -c 'lm' /proc/cpuinfo
+#   register: has_64_bit_cpu
+#   changed_when: "'1' not in has_64_bit_cpu.stdout"
+
+- name: Ensure qemu-kvm and libvirt is installed
+  apt:
+    name: "{{ packages }}"
+    state: present
+    force_apt_get: yes
+  vars:
+    packages:
+    - qemu-kvm
+    - libvirt-clients
+    - libvirt-daemon-system
+
+- name: Ensure virtinst is installed
+  apt:
+    name: virtinst
+    state: present
+    force_apt_get: yes
+
+- name: Ensure virt-manager is installed
+  apt:
+    name: virt-manager
+    state: present
+    force_apt_get: yes
+  when: not kvm_headless

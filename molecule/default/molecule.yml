@@ -5,9 +5,24 @@ driver:
   name: docker
 lint:
   name: yamllint
+  options:
+    config-data:
+      ignore: venv/
 platforms:
-  - name: instance
-    image: centos:7
+  - name: debian-buster
+    image: debian:buster
+    privileged: true
+    volumes:
+      - /lib/modules:/lib/modules
+    capabilities:
+      - all
+  - name: debian-stretch
+    image: debian:stretch
+    privileged: true
+    volumes:
+      - /lib/modules:/lib/modules
+    capabilities:
+      - all
 provisioner:
   name: ansible
   lint:

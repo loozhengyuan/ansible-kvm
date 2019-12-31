@@ -1,6 +1,9 @@
 Role Name
 =========
 
+[![](https://github.com/loozhengyuan/ansible-kvm/workflows/Main%20Workflow/badge.svg?branch=master)](https://github.com/loozhengyuan/ansible-kvm/actions)
+[![](https://travis-ci.com/loozhengyuan/ansible-kvm.svg?branch=master)](https://travis-ci.com/loozhengyuan/ansible-kvm)
+
 A brief description of the role goes here.
 
 Requirements

@@ -32,3 +32,10 @@
     state: present
     force_apt_get: yes
   when: not kvm_headless
+
+- name: Ensure authorised users are added to `libvirt` group
+  user:
+    name: "{{ item }}"
+    group: libvirt
+    append: yes
+  loop: "{{ kvm_authorised_users }}"

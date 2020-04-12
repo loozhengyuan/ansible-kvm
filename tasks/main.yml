@@ -1,13 +1,15 @@
 ---
-# - name: Check required cpu extensions (svm|vmx)
-#   shell: "egrep -c '(vmx|svm)' /proc/cpuinfo"
-#   register: has_virt_cpu_extensions
-#   changed_when: "'1' not in has_virt_cpu_extensions.stdout"
+- name: Check if CPU has virtualization extensions
+  shell: grep -c -e vmx -e svm /proc/cpuinfo  # noqa: 301 305
+  tags:
+    # Skip check in Molecule
+    - molecule-notest
 
-# - name: Check if processor is 64-bit
-#   shell: egrep -c 'lm' /proc/cpuinfo
-#   register: has_64_bit_cpu
-#   changed_when: "'1' not in has_64_bit_cpu.stdout"
+- name: Check if CPU is 64-bit
+  shell: grep -c -e lm /proc/cpuinfo  # noqa: 301 305
+  tags:
+    # Skip check in Molecule
+    - molecule-notest
 
 - name: Ensure qemu-kvm and libvirt is installed
   apt:

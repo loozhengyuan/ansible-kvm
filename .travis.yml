@@ -13,4 +13,6 @@ install:
   - make install
 script:
   - make lint
-  - make test
+  # Tests for ansible take a long time to complete,
+  # hence it is omitted to save build minutes.
+  # - make test

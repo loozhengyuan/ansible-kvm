@@ -19,7 +19,9 @@ requirements:
 		setuptools \
 		wheel
 	venv/bin/python -m pip install --upgrade \
-		ansible
+		ansible \
+        molecule \
+        docker
 	venv/bin/python -m pip freeze | grep -v "pkg-resources" > requirements.txt
 
 create:

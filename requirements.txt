@@ -21,7 +21,7 @@ importlib-metadata==1.6.0
 Jinja2==2.11.1
 jinja2-time==0.2.0
 MarkupSafe==1.1.1
-molecule==3.0.2
+molecule==3.0.3
 monotonic==1.5
 paramiko==2.7.1
 pathspec==0.8.0

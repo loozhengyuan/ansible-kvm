@@ -1,11 +1,7 @@
 #!/bin/bash
-# Runs linter before committing changes
+# Shell script for checking Ansible roles
 
-# Ensures that script exits if error is detected
-set -e
-
-# Use virtual environment
-source venv/bin/activate
+set -euxo pipefail
 
 # Runs linter
 make lint

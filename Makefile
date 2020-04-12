@@ -25,25 +25,14 @@ requirements:
 	venv/bin/python -m pip freeze | grep -v "pkg-resources" > requirements.txt
 
 create:
-	command -v ansible-galaxy || pip install --upgrade \
-        ansible
 	ansible-galaxy init ${ROLE_NAME}
-	command -v molecule || pip install --upgrade \
-        molecule \
-        docker
 	molecule init scenario
 	mv ${ROLE_NAME}/* .
 	mv ${ROLE_NAME}/.travis.yml .
 	rm -d ${ROLE_NAME}
 
-lint:
-	command -v molecule || pip install --upgrade \
-        molecule \
-        docker
+lint: install
 	molecule lint
 
-test:
-	command -v molecule || pip install --upgrade \
-        molecule \
-        docker
+test: install
 	molecule test

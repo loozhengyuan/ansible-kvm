@@ -1,12 +1,16 @@
 ---
 - name: Check if CPU has virtualization extensions
-  shell: grep -c -e vmx -e svm /proc/cpuinfo  # noqa: 301 305
+  shell: grep -c -e vmx -e svm /proc/cpuinfo  # noqa: 305
+  register: cpu_has_virt_ext
+  changed_when: cpu_has_virt_ext.rc != 0
   tags:
     # Skip check in Molecule
     - molecule-notest
 
 - name: Check if CPU is 64-bit
-  shell: grep -c -e lm /proc/cpuinfo  # noqa: 301 305
+  shell: grep -c -e lm /proc/cpuinfo  # noqa: 305
+  register: cpu_is_64bit
+  changed_when: cpu_is_64bit.rc != 0
   tags:
     # Skip check in Molecule
     - molecule-notest

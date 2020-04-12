@@ -32,6 +32,10 @@ create:
 	rm -d ${ROLE_NAME}
 
 lint: install
+	command -v ansible-lint || pip install --upgrade \
+        ansible-lint
+	# command -v ansible-lint || pip install --upgrade \
+    #     ansible-lint
 	molecule lint
 
 test: install

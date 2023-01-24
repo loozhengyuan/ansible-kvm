@@ -1,4 +1,4 @@
-ansible==2.9.6
+ansible==7.0.0
 arrow==0.15.5
 bcrypt==3.1.7
 binaryornot==0.4.4
